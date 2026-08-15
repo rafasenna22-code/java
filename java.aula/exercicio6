@@ -1,0 +1,8 @@
+public class Exercicio6 {
+    public static void main(string[] args) {
+        string nome = "Marina";
+        int idade = 19;
+
+        System.out.println("Nome:" + "possui" + idade + "anos.");
+    }
+}
