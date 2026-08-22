@@ -1,0 +1,6 @@
+public class exercicio9 {
+    public static void main(String[] args) {
+        double num1 = 15.0;
+        doublenum2 = 4.0;
+    }
+}
