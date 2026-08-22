@@ -1,7 +1,7 @@
 public class Carro {
     String marca;
-    string cor;
-    string modelo;
+    String cor;
+    String modelo;
     int velocidade;
 
     void acelerar(){
@@ -15,7 +15,7 @@ public class Carro {
         System.out.println("cor:" + cor);
         System.out.println("modelo:" + modelo);
         System.out.println("velocidade:" + velocidade);
-        system.out.println();
+        System.out.println();
     
 
     }
