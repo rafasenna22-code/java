@@ -1,6 +1,0 @@
-//int idade="20"; double altura= 1,75; char letra = "A";boolean matriculado= "true";
-//codigo corrigido:
-int idade= 20;
-double altura= 1.75;
-char letra = 'A';
-boolean matriculado= true;

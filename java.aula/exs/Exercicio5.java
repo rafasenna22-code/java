@@ -1,4 +1,4 @@
-public class Exercicio05 {
+public class Exercicio5 {
     public static void main(String[] args) {
         String nome = "Rafael Magno da Silva Senna";
         int idade = 31;

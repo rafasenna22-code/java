@@ -1,9 +1,9 @@
-public class main{
+public class Main1{
 
 
-public static void main(String[] args) {
+public static void Main(String[] args) {
 System.out.println("Olá, mundo!");
-System.out.println("Que Deus abeçoe a nossa caminhada!");
+System.out.println("Que Deus abençoe a nossa caminhada!");
 System.out.println("Ótimo sábado!");
 System.out.println("Nome:Rafael Magno da Silva Senna");
 System.out.println("Curso: Técnicas de digitação");
