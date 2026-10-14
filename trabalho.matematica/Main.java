@@ -13,7 +13,7 @@ public class Main {
         String[] todosUsuarios = {"Ana", "Bia", "Caio"};
         String[][] todosInteresses = {
             {"rock", "dança", "esporte", "games"},           // Ana (Índice 0)
-            {"dança", "esporte", "séries", "viagens"},      // Bia (Índice 1)
+            {"dança","esporte","séries", "viagens"},      // Bia (Índice 1)
             {"games", "tecnologia", "esporte"}             // Caio (Índice 2)
         };
 

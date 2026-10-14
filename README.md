@@ -86,6 +86,42 @@ Cenário 2: Casos de Teste (Conjuntos Iguais e Disjuntos)Para testar este cenár
 }
 B. Elementos Repetidos na EntradaCaso a entrada contenha elementos duplicados (ex: {"rock", "rock", "esporte"}):Comportamento do código: O método pertence e as rotinas de união operam diretamente sobre o array bruto. Para garantir que conjuntos matemáticos puros não tenham duplicadas na exibição ou cardinalidade, recomenda-se que a entrada seja tratada previamente ou que o sistema filtre duplicatas. No estado atual, o array aceita o texto inserido, mas o cálculo de união via !pertence evita que o mesmo elemento de B seja duplicado ao se juntar com A.
 
-### Dicas de como fazer isso seu projeto:
+### Dicas de como fazer isso no projeto:
 1. **Para testar no console:** Execute o programa (`Main.java`), digite `1` (para Ana) ou digite o nome `Bia` / `Caio` diretamente quando solicitado.
 2. **Para validar os cenários avançados (como conjuntos vazios ou iguais):** Basta alterar temporariamente os valores da variável `todosInteresses` dentro da classe `Main` e rodar novamente para ver o resultado gerado pelo terminal bater com o cálculo manual.
+
+Cenário A: Testar Conjuntos Iguais
+Se você quiser que a Ana e a Bia tenham exatamente os mesmos gostos para ver o Índice de Jaccard dar 1.00:
+
+Altere a linha da Bia para ficar igual à da Ana:
+
+Java
+String[][] todosInteresses = {
+    {"rock", "dança", "esporte", "games"},          // Ana (Índice 0)
+    {"rock", "dança", "esporte", "games"},          // Bia (Índice 1 - IDÊNTICO)
+    {"games", "tecnologia", "esporte"}              // Caio (Índice 2)
+};
+
+ Cenário B: Testar Conjunto Vazio ({})
+Se você quiser testar o comportamento do programa quando um usuário não tem nenhum interesse cadastrado:
+
+Substitua os interesses de um dos usuários por colchetes vazios "" sem palavras dentro:
+
+Java
+String[][] todosInteresses = {
+    {"rock", "dança", "esporte", "games"},          // Ana (Índice 0)
+    {},                                             // Bia (Índice 1 - VAZIO)
+    {"games", "tecnologia", "esporte"}              // Caio (Índice 2)
+};
+
+ Cenário C: Testar Conjuntos Disjuntos (Nenhum em comum)
+Se você quiser colocar interesses totalmente diferentes para ver o Jaccard dar 0.00:
+
+Mude as palavras para que não haja nenhuma coincidência entre o usuário alvo e os outros:
+
+Java
+String[][] todosInteresses = {
+    {"rock", "musica"},                             // Ana (Índice 0)
+    {"viagens", "praia"},                           // Bia (Índice 1)
+    {"computacao", "livros"}                        // Caio (Índice 2)
+};
