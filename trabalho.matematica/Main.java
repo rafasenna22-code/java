@@ -12,9 +12,9 @@ public class Main {
         // Lista unificada com todos os usuários e seus respectivos interesses
         String[] todosUsuarios = {"Ana", "Bia", "Caio"};
         String[][] todosInteresses = {
-            {"rock", "jazz", "cinema", "games"},           // Ana (Índice 0)
-            {"jazz", "cinema", "séries", "viagens"},      // Bia (Índice 1)
-            {"games", "tecnologia", "cinema"}             // Caio (Índice 2)
+            {"rock", "dança", "esporte", "games"},           // Ana (Índice 0)
+            {"dança", "esporte", "séries", "viagens"},      // Bia (Índice 1)
+            {"games", "tecnologia", "esporte"}             // Caio (Índice 2)
         };
 
         // Exibe as opções disponíveis para o usuário escolher

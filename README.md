@@ -30,3 +30,62 @@ $$J(A, B) = \frac{\vert{}A \cap B\vert{}}{\vert{}A \cup B\vert{}}$$
 * Implementa uma proteção contra divisão por zero (`if (cardinalidadeUniao == 0)`), garantindo estabilidade caso conjuntos vazios sejam comparados.
 
 ---
+
+
+# Sistema de Recomendação por Teoria dos Conjuntos
+
+Este documento apresenta os cenários de teste, cálculos manuais e logs de execução do sistema de recomendação baseado na Teoria dos Conjuntos e no Índice de Jaccard.
+
+---
+
+## Cenário 1: Execução Padrão (Usuário Alvo: Ana)
+
+### Dados Iniciais
+* **Ana:** `{"rock", "dança", "esporte", "games"}`
+* **Bia:** `{"dança", "esporte", "séries", "viagens"}`
+* **Caio:** `{"games", "tecnologia", "esporte"}`
+
+### Cálculos Manuais (Ana comparada com Caio)
+1. **Interseção ($A \cap C$):** Elementos em comum entre Ana e Caio.
+   * Interseção = `{"games", "esporte"}` $\rightarrow$ **Cardinalidade = 2**
+2. **União ($A \cup C$):** Todos os elementos combinados sem repetição.
+   * União = `{"rock", "dança", "esporte", "games", "tecnologia"}` $\rightarrow$ **Cardinalidade = 5**
+3. **Índice de Jaccard $J(A, C)$:**
+   * $J = \frac{\vert{}A \cap C\vert{}}{\vert{}A \cup C\vert{}} = \frac{2}{5} = 0.40$
+
+### Log de Saída Esperado
+```text
+=========================================================================
+   SISTEMA DE RECOMENDAÇÃO INTERATIVO - TEORIA DOS CONJUNTOS          
+=========================================================================
+
+Usuários cadastrados no sistema:
+1. Ana -> {rock, dança, esporte, games}
+2. Bia -> {dança, esporte, séries, viagens}
+3. Caio -> {games, tecnologia, esporte}
+
+Digite o número ou o nome do usuário alvo que deseja analisar: 1
+
+----------------------------------------------------------------------------------
+Usuário Alvo Selecionado: Ana
+Conjunto de Interesses: {rock, dança, esporte, games} (Cardinalidade = 4)
+----------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------
+Par                            | Interseção (A ∩ B)        | União (A ∪ B)              | Jaccard  
+----------------------------------------------------------------------------------
+Ana e Bia                    | {dança, esporte} (2)      | {rock, dança, esporte, games, séries, viagens} (6) | 0.33
+Ana e Caio                   | {games, esporte} (2)      | {rock, dança, esporte, games, tecnologia} (5) | 0.40
+----------------------------------------------------------------------------------
+
+[RESULTADO DA RECOMENDAÇÃO]
+Para Ana, a recomendação mais forte é Caio, pois possui o maior índice de afinidade (Jaccard = 0.40).
+
+Cenário 2: Casos de Teste (Conjuntos Iguais e Disjuntos)Para testar este cenário, você pode alterar temporariamente a matriz todosInteresses no código para simular comportamentos extremos.A. Conjuntos Iguais (Ex: Ana e uma "Ana Copia")Conjunto A: {"rock", "games"}Conjunto B: {"rock", "games"}Cálculo Manual:Interseção = {"rock", "games"} (Cardinalidade = 2)União = {"rock", "games"} (Cardinalidade = 2)Jaccard = $2 / 2 = 1.00$ (Afinidade máxima / 100% de similaridade)B. Conjuntos Disjuntos (Nenhum elemento em comum)Conjunto A: {"rock"}Conjunto B: {"viagens"}Cálculo Manual:Interseção = {} (Cardinalidade = 0)União = {"rock", "viagens"} (Cardinalidade = 2)Jaccard = $0 / 2 = 0.00$ (Nenhuma afinidade)Cenário 3: Conjunto Vazio e Tratamento de ExceçõesA. Conjunto VazioSe um usuário cadastrado não tiver nenhum interesse ({}):Comportamento do código: A função formatarConjunto retorna "{}". O cálculo da união funcionará, mas se a união total for vazia (cardinalidade = 0), a função calcularJaccard protege o sistema contra divisão por zero retornando 0.0 automaticamente:Javaif (cardinalidadeUniao == 0) {
+    return 0.0;
+}
+B. Elementos Repetidos na EntradaCaso a entrada contenha elementos duplicados (ex: {"rock", "rock", "esporte"}):Comportamento do código: O método pertence e as rotinas de união operam diretamente sobre o array bruto. Para garantir que conjuntos matemáticos puros não tenham duplicadas na exibição ou cardinalidade, recomenda-se que a entrada seja tratada previamente ou que o sistema filtre duplicatas. No estado atual, o array aceita o texto inserido, mas o cálculo de união via !pertence evita que o mesmo elemento de B seja duplicado ao se juntar com A.
+
+### Dicas de como fazer isso seu projeto:
+1. **Para testar no console:** Execute o programa (`Main.java`), digite `1` (para Ana) ou digite o nome `Bia` / `Caio` diretamente quando solicitado.
+2. **Para validar os cenários avançados (como conjuntos vazios ou iguais):** Basta alterar temporariamente os valores da variável `todosInteresses` dentro da classe `Main` e rodar novamente para ver o resultado gerado pelo terminal bater com o cálculo manual.
